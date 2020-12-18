@@ -30,26 +30,15 @@ let client = AgoraRTC.createClient({
     codec: "vp8",
 });
 
-client.init("0e2de62ba24a4cd6906a138334dd863c");
+client.init("eb761aaf45ae45e9be1e1c31bf4634a4");
 
 // The value of role can be "host" or "audience".
-client.setClientRole("host");
+
 
 // Join a channel
-client.join("0060e2de62ba24a4cd6906a138334dd863cIACxfbSrJYde60IMY7LSM5ZPOJX4nbOEDe2MMNEXI6szbwrCxmsAAAAAEADf1vrToFDbXwEAAQCfUNtf", "channel1", null, (uid)=>{
+client.join("006eb761aaf45ae45e9be1e1c31bf4634a4IAC16vx5Cc20Azf6sJh2cf/Ryae62yuDth5Mjkq3Z37esQrCxmsAAAAAEAAPRLuFFpHdXwEAAQAUkd1f", "channel1", null, (uid)=>{
     // Create a local stream
-  }, handleError);
-
-  let localStream = AgoraRTC.createStream({
-    audio: true,
-    video: true,
-});
-// Initialize the local stream
-localStream.init(()=>{
-    // Play the local stream
-    localStream.play("me");
-    // Publish the local stream
-    // client.publish(localStream, handleError);  //But it should be non commented
+    client.setClientRole("audience");
 }, handleError);
 
 // Subscribe to the remote stream when it is published
