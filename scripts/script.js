@@ -38,8 +38,25 @@ client.init("eb761aaf45ae45e9be1e1c31bf4634a4");
 // Join a channel
 client.join("006eb761aaf45ae45e9be1e1c31bf4634a4IAC16vx5Cc20Azf6sJh2cf/Ryae62yuDth5Mjkq3Z37esQrCxmsAAAAAEAAPRLuFFpHdXwEAAQAUkd1f", "channel1", null, (uid)=>{
     // Create a local stream
+<<<<<<< HEAD
     client.setClientRole("audience");
 }, handleError);
+=======
+    let localStream = AgoraRTC.createStream({
+       audio : true,
+       video : false
+    });
+    // Initialize the local stream
+    localStream.init(()=>{
+        // Play the local stream
+        localStream.play("me");
+        // Publish the local stream
+        client.publish(localStream, handleError);  //But it should be non commented
+    }, handleError);
+  }, handleError);
+
+  
+>>>>>>> 84ca30061cc09816edfe329e1bc964e6c62b7e9e
 
 // Subscribe to the remote stream when it is published
 client.on("stream-added", function(evt){
